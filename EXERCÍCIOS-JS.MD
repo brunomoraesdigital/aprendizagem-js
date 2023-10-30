@@ -4,7 +4,7 @@ Neste projeto, você encontrará exercícios para praticar JavaScript. Cada exer
 
 ## Variáveis
 
-### Exercício 1 - O Nome Mágico
+### Exercício 1 - Calculando Números
 
 **Descrição:** Crie uma variável chamada 'nome' e atribua seu próprio nome a ela. Em seguida, use `console.log` para imprimir "Olá, [seu nome]!"
 
