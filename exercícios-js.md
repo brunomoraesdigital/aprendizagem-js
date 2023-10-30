@@ -44,7 +44,7 @@ Sinta-se à vontade para contribuir com exercícios ou soluções para os exerc�
 
 ## Recursos Adicionais
 
-- [Documentação JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Curso de JavaScript no MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+- [Documentação JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript){:target="_blank"}
+- [Curso de JavaScript no MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript){:target="_blank"}
 
 Divirta-se programando em JavaScript!
