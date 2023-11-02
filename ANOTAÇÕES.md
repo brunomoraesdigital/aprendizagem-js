@@ -107,14 +107,177 @@ TypeError: testeVariavel is not a function
 Node.js v18.18.0
 PS C:\Users\brndr\OneDrive\Documentos\GitHub\Nova pasta>
 ```
-## **Escopo**
+## **ESCOPO**
 `Escopo` é o contexto que determina a visibilidade e acessibilidade de variáveis e funções em um programa
 - **Escopo global**: Refere-se a quando uma variável é acessível em todo o programa. Isso ocorre quando você declara uma variável fora de qualquer função ou bloco usando var, let ou const.
 - **Escopo local**: Refere-se a quando uma variável é acessível apenas dentro de uma determinada área do código. Isso pode ser uma função (**escopo de função**) ou um bloco (**escopo de bloco**), dependendo de como a variável é declarada. Aqui estão as definições específicas:
   - **Escopo de função**: (usando var) A variável declarada com var é visível apenas dentro da função onde foi declarada. No entanto, se a mesma variável fosse declarada com var dentro de um bloco (como um loop for, if, etc), mas fora de qualquer função, ela será de escopo global. Isso ocorre porque var não respeita o escopo de bloco, apenas o escopo de função e global.
   - **Escopo de bloco**: (usando let ou const) A variável é visível apenas dentro do bloco onde foi declarada. Se declarada fora de qualquer bloco, ela será de escopo global.
+    
 ## CONDICIONAL
+`Estruturas condicionais` permitem a tomada de decisões e realização de ações de acordo com diferentes entradas.
+```javascript
+if (condicao) {
+  // faça isso
+} else {
+  // faça isso
+}
+```
+` if | esle if | if `
+- **if**: Se a condição for atendida faça algo
+```javascript
+let idade = 18;
+ if (idade >= 18) {
+     console.log("Você é maior de idade.");
+ }
+
+let valorA = 3>2; // é verdadeiro que 3 é maior que 2, então valorA recebe true
+ if (valorA) { 
+    console.log(valorA); // Saída: true
+ }
+
+ let valorB = 3==2; // é falso que 3 é igual a 2, então valorB recebe false
+ if (valorB) { 
+    console.log(valorB); // Saída: não há saída
+ }
+```
+- **else if**: Se a primeira condição 'if' for falsa, as próximas condições serão verificadas. Assim que uma condição for atendida, o bloco de código associado a ela será executado.
+```javascript
+let nota = 85;
+if (nota >= 90) {
+    console.log("Sua nota é A.");
+} else if (nota >= 80) {
+    console.log("Sua nota é B.");
+} else if (nota >= 70) {
+    console.log("Sua nota é C.");
+} else if (nota >= 60) {
+    console.log("Sua nota é D.");
+} else if (nota < 60) {
+    console.log("Sua nota é F.");
+}
+```
+- **else**: Se todas as condições if e else if forem falsas, o bloco de código associado ao else será executado. Isso significa que o else captura todos os casos que não foram atendidos pelas condições anteriores. Veja o exemplo abaixo:
+```javascript
+let nota = 55;
+if (nota >= 60) {
+    console.log("Você passou.");
+} else {
+    console.log("Você não passou.");
+}
+
+let temperatura = 30;
+if (temperatura > 35) {
+    console.log("Está muito quente hoje.");
+} else if (temperatura > 25) {
+    console.log("Está quente, mas tolerável.");
+} else {
+    console.log("A temperatura está agradável hoje.");
+}
+```
 ## REPTIÇÃO
+`estruturas de repetição` também conhecidas como laços (loops), são usadas quando há a necessidade de repetir um bloco de código diversas vezes. 
+
+` for | while | do-while `
+- **for**: é uma estrutura de repetição que permite executar um bloco de código um número específico de vezes. 
+```javascript
+for (let i = 0; i < 5; i++) {
+  // Código a ser repetido aqui
+}
+```
+- **while**: O bloco de código é repetido enquanto uma condição específica for verdadeira, sendo a condição verificada antes de cada iteração.
+```javascript
+while (condição) {
+  // Código a ser repetido aqui
+}
+```
+- **do-while**: Garante que o bloco de código seja executado pelo menos uma vez, já que a condição é verificada após a execução do bloco.
+```javascript
+do {
+  // Código a ser repetido aqui
+} while (condição);
+
+```
+## Outras formas de iteração em JavaScript
+> **iteração** - ato de repetir uma função por um determinado período de tempo até que uma condição seja atendida.
+
+- Existem outras formas de iteração que são menos comuns, mas ainda assim são parte do JavaScript:
+- 
+`For-In | For-Of `
+- **for-in**: é usado para iterar sobre as propriedades enumeráveis de um objeto.
+```javascript
+for (let prop in objeto) {
+  // Código a ser repetido aqui
+}
+```
+- **for-of**: é utilizado para percorrer elementos de arrays, strings e outros objetos iteráveis de forma simples.
+```javascript
+for (const elemento of array) {
+  // Código a ser repetido aqui
+}
+```
+## Métodos de iteração de arrays
+-Além dos loops e métodos mencionados acima, JavaScript oferece uma série de métodos de iteração convenientes para trabalhar com arrays:
+` forEach() | map() | filter() | reduce() | some() | every() `
+- **forEach()**: permite executar uma função em cada elemento de um array sem a necessidade de escrever um loop explícito.
+```javascript
+array.forEach(function(elemento) {
+  // Código a ser repetido aqui
+});
+```
+- **map()**: cria um novo array com os resultados de aplicar uma função a cada elemento do array original.
+```javascript
+const novoArray = array.map(function(elemento) {
+  // Código a ser aplicado a cada elemento
+  return novoElemento;
+});
+```
+- **filter()**: cria um novo array contendo apenas os elementos que atendem a uma condição especificada em uma função.
+```javascript
+const novoArray = array.filter(function(elemento) {
+  // Condição para inclusão no novo array
+  return verdadeiro ou falso;
+});
+```
+- **reduce()**:  reduz os elementos do array a um único valor usando uma função acumuladora.
+```javascript
+const resultado = array.reduce(function(acumulador, elemento) {
+  // Código para acumular os elementos
+  return novoValorAcumulado;
+}, valorInicial);
+```
+- **same()**: verifica se pelo menos um elemento do array atende a uma condição especificada em uma função.
+```javascript
+const algumElementoAtende = array.some(function(elemento) {
+  // Condição a ser verificada
+  return verdadeiro ou falso;
+});
+```
+- **every()**: verifica se todos os elementos do array atendem a uma condição especificada em uma função.
+```javascript
+const todosElementosAtendem = array.every(function(elemento) {
+  // Condição a ser verificada
+  return verdadeiro ou falso;
+});
+```
+## Métodos de busca
+- Além das operações acima, JavaScript oferece métodos para buscar elementos em um array:
+
+` find() | findIndex() `
+- **find()**: retorna o primeiro elemento de um array que satisfaça uma condição especificada em uma função.
+```javascript
+const elementoEncontrado = array.find(function(elemento) {
+  // Condição a ser verificada
+  return verdadeiro ou falso;
+});
+```
+- **findIndex()**: retorna o índice do primeiro elemento de um array que satisfaça uma condição especificada em uma função.
+```javascript
+const indiceElementoEncontrado = array.findIndex(function(elemento) {
+  // Condição a ser verificada
+  return verdadeiro ou falso;
+});
+```
+
 ## FUNÇÃO
 `função` é um bloco de código reutilizável que realiza tarefas específicas quando chamado
 ```javascript
