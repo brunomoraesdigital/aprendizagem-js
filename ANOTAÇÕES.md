@@ -1,4 +1,5 @@
-# Javascript
+# Meu caderno de anotações Javascript
+> “JavaScript é como um lápis: é simples começar a usar, mas a gama de coisas que você pode fazer com ele é imensa.” 
 
 ## VARIÁVEIS 
 `Variável` é um recipiente nomeado para armazenar e representar dados em um programa de computador.
@@ -343,12 +344,41 @@ console.log(bruno.nome); // Saída: "Bruno Moraes"
 console.log(bruno.idade); // Saída: 30
 ```
 
-convenções de nomenclatura
+## Tipos de dados 
+`boolean:` Representa um valor verdadeiro (true) ou falso (false).
+```javascript
+var isTrue = true;
+var isFalse = false;
+```
+`null:` É um valor especial que representa a ausência intencional de qualquer valor ou objeto.
+```javascript
+var myVar = null;
+```
+`undefined:` Representa uma variável que foi declarada, mas não foi atribuída a um valor. Também é o valor padrão retornado por uma função quando nenhum valor é explicitamente retornado.
+```javascript
+var x;
+var y = undefined;
+```
+`number:` Representa valores numéricos, tanto inteiros como de ponto flutuante.
+```javascript
+var age = 30;
+var price = 19.99;
+```
+`string`: Representa sequências de caracteres, como texto.
+```javascript
+var name = "João";
+var message = 'Olá, mundo!';
+```
+`symbol:` É um tipo de dado usado para criar valores únicos que podem ser usados como chaves de propriedade de objetos. Símbolos são úteis em cenários onde você deseja evitar colisões de nomes de propriedades.
+```javascript
+var uniqueSymbol = Symbol("descrição opcional");
+```
+`NaN` (Not-a-Number): Representa um valor especial que é retornado quando ocorrem operações matemáticas inválidas, como a divisão de zero por zero.
+```javascript
+var result = 10 / "texto";
+```
+## CONVENÇÃO DE NOMENCLATURA
 
-tiposde dados boolean, null, undefined, number, string, symbol, nan
-
-ver	https://0.30000000000000004.com/
-decimal.js
 
 orientação a protótipo
 
