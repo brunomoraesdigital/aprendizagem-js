@@ -412,12 +412,5 @@ Sinta-se à vontade para contribuir com exercícios simples e soluções acessí
 2. Crie um branch para sua solução ou alterações.
 3. Envie um pull request.
 4. Vamos aprender juntos! 😊
-
-## Recursos Adicionais
-
-## Licença
-
-Este repositório é distribuído sob a [Licença MIT](LICENSE).
-
 ---
 Divirta-se programando em JavaScript!
