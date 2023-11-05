@@ -406,11 +406,12 @@ solução aqui
 ```
 
 ## Como Contribuir
+Sinta-se à vontade para contribuir com exercícios simples e soluções acessíveis e melhorias neste repositório. O foco é compartilhar conhecimento, não complexidade. Para contribuir, siga estas etapas:elhorias neste repositório.
 
-Sinta-se à vontade para contribuir com exercícios ou soluções para os exercícios ou fazer melhorias neste repositório. Para contribuir, siga estas etapas:
 1. Faça um fork deste repositório.
 2. Crie um branch para sua solução ou alterações.
 3. Envie um pull request.
+4. Vamos aprender juntos! 😊
 
 ## Recursos Adicionais
 
