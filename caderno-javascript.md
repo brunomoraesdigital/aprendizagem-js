@@ -556,9 +556,5 @@ Sinta-se à vontade para contribuir com novos exercícios, soluções ou melhori
 3. Envie um pull request.
 4. Vamos aprender e crescer juntos! 😊
 
-## Licença
-
-Este repositório é distribuído sob a [Licença MIT](LICENSE).
-
-
-
+---
+Divirta-se programando em JavaScript!
