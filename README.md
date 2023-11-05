@@ -1,10 +1,10 @@
-# Meu Repositório de Aprendizado em JavaScript
+# Meu Repositório de Aprendizaem em Tecnologias da Informação
 
 Bem-vindo ao meu repositório de aprendizado em JavaScript! Aqui, eu mantenho minhas anotações, exercícios e soluções relacionadas ao JavaScript.
 
 ## Cadernos de anotações
 
-- [Caderno de JavaScript](caderno-javascript.md)
+- [Caderno de JavaScript](Caderno-javascript.md)
 - [Caderno de ...](#)
 - [Caderno de ...](#)
 
@@ -12,7 +12,7 @@ Bem-vindo ao meu repositório de aprendizado em JavaScript! Aqui, eu mantenho mi
 
 Neste repositório, também mantenho uma coleção de exercícios de programação em JavaScript e suas respectivas soluções.
 
-- [Exercícios: JavaScript](exercicios-javascript.md)
+- [Exercícios: JavaScript](Exercicios-javascript.md)
 - [Exercícios: ...](#)
 - [Exercício: ...](#)
 
