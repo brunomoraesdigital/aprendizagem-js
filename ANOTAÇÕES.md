@@ -1,4 +1,4 @@
-# Meu caderno de anotações Javascript
+# 📓 Meu caderno de anotações Javascript
 > “JavaScript é como um lápis: é simples começar a usar, mas a gama de coisas que você pode fazer com ele é imensa.” 
 
 ## VARIÁVEIS 
