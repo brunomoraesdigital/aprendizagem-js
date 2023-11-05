@@ -1,4 +1,4 @@
-# Exercícios JavaScript
+# 📑Exercícios JavaScript
 
 Neste projeto, você encontrará exercícios para praticar JavaScript. Cada exercício inclui uma descrição e uma solução em JavaScript.
 
