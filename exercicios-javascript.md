@@ -419,4 +419,5 @@ Sinta-se à vontade para contribuir com exercícios simples e soluções acessí
 
 Este repositório é distribuído sob a [Licença MIT](LICENSE).
 
+---
 Divirta-se programando em JavaScript!
