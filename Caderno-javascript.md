@@ -543,10 +543,150 @@ var result = 10 / "texto";
 ## CONVENÇÃO DE NOMENCLATURA
 
 
-orientação a protótipo
+## ORIENTAÇÃO A PROTÓTIPO
+```javascript
+/* PROTOTIPO */
+
+const pessoa = {
+    genero: 'masculino'
+}
+
+const bruno = {
+    nome: 'Bruno',
+    idade: 30,
+    __proto__: pessoa
+}
+
+console.log(bruno.genero);
+```
+```
+/* FUNÇÃO CONSTRUTORA */
+
+// sempre que vemos uma função com letra Maiúsculaa ela é uma função construtora (construtor)
+function Pessoa (nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+}
+
+const bruno = new Pessoa('bruno', 30);
+
+console.log(bruno);
+
+Pessoa.prototype.falar = function () {
+    console.log(`Meu nome é ${this.nome}`);
+}
+
+bruno.falar();
+```
+
+```
+// BASICAMENTE FUNÇÃO CONSTRUTORA E CLASSE SÃO EQUIVALENTES
+
+/* FUNÇÃO CONSTRUTORA */ // CRIADO PARA PARECER MAIS COM OUTRAS LINGUAGENS
+
+function Pessoa (nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+}
+
+Pessoa.prototype.falar = function () {
+    console.log(`Meu nome é ${this.nome}`);
+}
+
+/* CLASSE */
+class Pessoa {
+    constructor(nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+    falar () {
+        console.log(`Meu nome é ${this.nome}`);
+    }
+}
+```
+```
+/* SOBRESCRITA e (Shadowing?) */
+
+const pessoa = {
+    genero: 'masculino'
+}
+
+const funcionario = {
+    nome: 'bruno',
+    genero: 'n/i',
+    __proto__: pessoa
+}
+
+console.log(funcionario.genero);
+```
+```
+// PROTOTIPOS CRIADOR POR MEIO DE OBJETOS LITERAIS
+
+const pessoa = {
+    genero: 'masculino'
+}
+/* A MANEIRA MAIS SIMPLES DE CRIAR UM OBJETO BASEADO EM OUTRO É A FORMA LITERAL*/
+
+const funcionario = {
+    nome: 'bruno',
+    __proto__: pessoa
+}
+
+console.log(funcionario); // Saída: { nome: 'bruno' }
+console.log(funcionario.genero); // Saída: masculino
+
+
+/* A SEGUNDA MANEIRA SIMPLES É POR ATRAVÉS DO Object.create()*/
+
+const empregado = Object.create(pessoa);
+empregado.nome = 'bruno';
+
+console.log(empregado); // Saída: { nome: 'bruno' }
+console.log(empregado.genero); // Saída: masculino
+```
+
+```
+/* Entendendo melhor o operador New e Brincando com Protótipos */
+
+function Pessoa (nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+}
+/* */ 
+console.log(new Pessoa('bruno', 30));
+/* */
+Pessoa.prototype.falar = function () {
+    console.log(`Meu nome é ${this.nome}`)
+}
+const funcionario = new Pessoa('bruno', 30)
+funcionario.falar();
+/* */
+const empregado = {
+    genero: 'masculino'
+    //poderia ser vazio
+};
+Pessoa.call(empregado, 'bruno', 30); //pessoa passa a ser um objeto inrequecido
+
+console.log(empregado);
+console.log(empregado.nome);
+```
 
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Como Contribuir
 
 Sinta-se à vontade para contribuir com novos exercícios, soluções ou melhorias neste repositório. O objetivo é compartilhar conhecimento e aprender juntos! Para contribuir, siga estas etapas:
