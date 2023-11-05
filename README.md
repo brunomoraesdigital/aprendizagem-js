@@ -30,4 +30,4 @@ Sinta-se à vontade para contribuir com novos exercícios, soluções ou melhori
 Este repositório é distribuído sob a [Licença MIT](LICENSE).
 
 ---
-Divirta-se programando em JavaScript!
+Divirta-se programando!
