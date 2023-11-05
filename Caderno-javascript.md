@@ -544,42 +544,102 @@ var result = 10 / "texto";
 
 
 ## ORIENTAÇÃO A PROTÓTIPO
+
+Em JavaScript, a herança é baseada em protótipos, não em classes como em outras linguagens. Os objetos herdam propriedades e métodos de outros objetos.
+
+`Herança de Protótipo em JavaScript ` permite que um objeto herde propriedades e métodos de outro objeto, conhecido como seu protótipo. Isso é alcançado ao definir a propriedade __proto__ de um objeto filho, que aponta para o objeto protótipo. [[]] Quando uma propriedade ou método é acessado em um objeto filho, o JavaScript primeiro verifica se o objeto filho possui essa propriedade ou método e, se não, ele procura no objeto protótipo.
+
+Aqui está o código que demonstra a herança de protótipo:
 ```javascript
 /* PROTOTIPO */
-
 const pessoa = {
     genero: 'masculino'
 }
-
 const bruno = {
     nome: 'Bruno',
     idade: 30,
     __proto__: pessoa
 }
+console.log(bruno.genero); // Saída: masculino
+```
+`Sombreammento em JavaScript` ocorre quando um objeto filho tem uma propriedade com o mesmo nome que uma propriedade em seu objeto protótipo. Nesse caso, a propriedade do objeto filho "sombrea" a propriedade do objeto protótipo, e a propriedade do objeto protótipo não é acessada quando você se refere a ela a partir do objeto filho.
 
-console.log(bruno.genero);
+Exemplo: Neste exemplo, o objeto **'funcionario'** tem uma propriedade "genero" que sombreia a propriedade "genero" do objeto protótipo "pessoa". Quando você acessa **'funcionario.genero'**, o valor "masculino" da propriedade do objeto filho é retornado, em vez do valor "n/i" do objeto protótipo. Isso demonstra o conceito de shadowing em JavaScript.
+```javascript
+/* SOMBREAMENTO (SHADOWING) */
+const pessoa = {
+    genero: 'n/i'
+}
+const funcionario = {
+    nome: 'Bruno',
+    genero: 'masculino', // Esta propriedade "sombrea" a propriedade "genero" do objeto protótipo.
+    __proto__: pessoa
+}
+   console.log(funcionario.genero); // Isso imprimirá 'masculino' no console, porque a propriedade "genero" do objeto filho "funcionario" sombreia a do objeto protótipo "pessoa".
 ```
+`Sobrescrever em JavaScript` ocorre quando é atribuido um novo valor a uma propriedade de um objeto. Isso faz com que a propriedade do objeto filho tenha um valor diferente da propriedade do objeto protótipo.
+
+**Exemplo 1:** Neste exemplo, a propriedade "genero" no objeto **'funcionario'** é sobrescrita com o valor **'feminino'**, substituindo o valor **'masculino'** do objeto pai **'pessoa'**.
+```javascript
+/* SOBRESCRITA (OVERRIDING) */
+const pessoa = {
+  genero: 'n/i'
+}
+const funcionario = {
+  nome: 'Darlen',
+  genero: 'masculino',
+  __proto__: pessoa
+}
+// Sobrescrevendo a propriedade 'genero' no objeto 'funcionario'
+funcionario.genero = 'feminino';
+console.log(funcionario.genero); // Saída: feminino
 ```
+**Exemplo 2:** Neste exemplo, a propriedade "genero" no objeto **'funcionario'** é sobrescrita com o valor **'feminino'**, mesmo que o objeto pai **'pessoa'** não tenha essa propriedade.
+```javascript
+/* SOBRESCRITA (OVERRIDING) */
+const pessoa = {
+  genero: 'n/i'
+}
+const funcionario = {
+  nome: 'Darlen',
+  __proto__: pessoa
+}
+// Sobrescrevendo a propriedade 'genero' no objeto 'funcionario'
+funcionario.genero = 'feminino';
+console.log(funcionario.genero); // Saída: feminino
+```
+**Exemplo 3:** Neste exemplo, a propriedade "genero" no objeto **'funcionario'** não é diretamente sobrescrita, mas a propriedade "genero" no objeto pai **'pessoa'** é modificada para _**'não declarado'**_, e, como o objeto **'funcionario'** herda essa propriedade, a saída é _**'não declarado'**_.
+```javascript
+/* SOBRESCRITA (OVERRIDING) */
+const pessoa = {
+  genero: 'n/i'
+}
+const funcionario = {
+  nome: 'Darlen',
+  __proto__: pessoa
+}
+// Sobrescrevendo a propriedade 'genero' no objeto 'funcionario' através do objeto pai 'pessoa'
+pessoa.genero = 'não declarado';
+console.log(funcionario.genero); // Saída: não declarado
+```
+`Função Construtora em JavaScript e Herança de Protótipo ` funções construtoras são usadas para criar objetos e estabelecer herança de protótipo. Funções construtoras são identificadas por iniciar com uma letra maiúscula e, quando invocadas com o operador **'new'**, criam novos objetos e definem propriedades e métodos para esses objetos. Além disso, objetos criados por meio de uma função construtora herdam as propriedades e métodos definidos em seu protótipo.
+**Exemplo:** Neste exemplo, a função construtora **'Pessoa'** é usada para criar objetos com propriedades **'nome'** e **'idade'**. O método **'falar'** é adicionado ao protótipo da função construtora **'Pessoa'**, tornando-o acessível a todos os objetos criados a partir dela. Quando chamamos **'bruno.falar()'**, estamos acessando o método definido no protótipo da função construtora. Isso ilustra como funções construtoras são usadas para criar objetos com herança de protótipo em JavaScript.
+```javascript
 /* FUNÇÃO CONSTRUTORA */
-
-// sempre que vemos uma função com letra Maiúsculaa ela é uma função construtora (construtor)
-function Pessoa (nome, idade) {
+// Sempre que uma função inicia com letra maiúscula, ela é uma função construtora (construtor)
+function Pessoa(nome, idade) {
     this.nome = nome;
     this.idade = idade;
 }
-
-const bruno = new Pessoa('bruno', 30);
-
+const bruno = new Pessoa('Bruno', 30);
 console.log(bruno);
-
 Pessoa.prototype.falar = function () {
     console.log(`Meu nome é ${this.nome}`);
 }
-
-bruno.falar();
+bruno.falar(); // Isso chama o método 'falar' definido no protótipo da função construtora.
 ```
-
-```
+*////////////////////*
+```javascript
 // BASICAMENTE FUNÇÃO CONSTRUTORA E CLASSE SÃO EQUIVALENTES
 
 /* FUNÇÃO CONSTRUTORA */ // CRIADO PARA PARECER MAIS COM OUTRAS LINGUAGENS
@@ -604,22 +664,8 @@ class Pessoa {
     }
 }
 ```
-```
-/* SOBRESCRITA e (Shadowing?) */
 
-const pessoa = {
-    genero: 'masculino'
-}
-
-const funcionario = {
-    nome: 'bruno',
-    genero: 'n/i',
-    __proto__: pessoa
-}
-
-console.log(funcionario.genero);
-```
-```
+```javascript
 // PROTOTIPOS CRIADOR POR MEIO DE OBJETOS LITERAIS
 
 const pessoa = {
@@ -670,18 +716,6 @@ Pessoa.call(empregado, 'bruno', 30); //pessoa passa a ser um objeto inrequecido
 console.log(empregado);
 console.log(empregado.nome);
 ```
-
-
----
-
-
-
-
-
-
-
-
-
 
 
 
