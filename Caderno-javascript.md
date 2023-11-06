@@ -543,7 +543,7 @@ var result = 10 / "texto";
 ## CONVENÇÃO DE NOMENCLATURA
 
 
-## ORIENTAÇÃO A PROTÓTIPO
+## PROTÓTIPO
 
 Em JavaScript, a herança é baseada em protótipos, não em classes como em outras linguagens. Os objetos herdam propriedades e métodos de outros objetos.
 
@@ -638,89 +638,136 @@ Pessoa.prototype.falar = function () {
 }
 bruno.falar(); // Isso chama o método 'falar' definido no protótipo da função construtora.
 ```
-*////////////////////*
+**Função Construtora e Classe em JavaScript**
+---
+Em JavaScript, tanto `funções construtoras` quanto `classes` são maneiras de criar *objetos* e definir *métodos* para esses objetos. Ambas são equivalentes em termos de funcionalidade, mas têm sintaxes diferentes.
+- Tanto a função construtora quanto a classe podem ser usadas para criar objetos com propriedades e métodos semelhantes. A escolha entre elas geralmente depende da preferência pessoal e do estilo de programação, pois ambas são usadas para alcançar o mesmo objetivo.
 ```javascript
 // BASICAMENTE FUNÇÃO CONSTRUTORA E CLASSE SÃO EQUIVALENTES
 
-/* FUNÇÃO CONSTRUTORA */ // CRIADO PARA PARECER MAIS COM OUTRAS LINGUAGENS
-
-function Pessoa (nome, idade) {
+/* FUNÇÃO CONSTRUTORA */ 
+// Declaração da função construtora Pessoa que cria objetos Pessoa.
+function Pessoa(nome, idade) {
     this.nome = nome;
     this.idade = idade;
 }
 
-Pessoa.prototype.falar = function () {
+// Adição do método 'falar' ao protótipo de Pessoa.
+Pessoa.prototype.falar = function() {
     console.log(`Meu nome é ${this.nome}`);
 }
 
+// Criação de duas instâncias da classe Pessoa.
+var pessoa1 = new Pessoa("Alice", 30);
+var pessoa2 = new Pessoa("Bob", 25);
+
+// Chamada do método 'falar' nas instâncias pessoa1 e pessoa2.
+pessoa1.falar(); // Isso imprimirá "Meu nome é Alice" no console.
+pessoa2.falar(); // Isso imprimirá "Meu nome é Bob" no console.
+
+
 /* CLASSE */
+// Aqui declaramos a classe Pessoa.
 class Pessoa {
-    constructor(nome, idade){
+    constructor(nome, idade) {
         this.nome = nome;
         this.idade = idade;
     }
-    falar () {
+    
+    falar() {
         console.log(`Meu nome é ${this.nome}`);
     }
 }
+
+// Aqui criamos duas instâncias da classe Pessoa.
+const pessoa1 = new Pessoa("Alice", 30);
+const pessoa2 = new Pessoa("Bob", 25);
+
+// Aqui chamamos o método 'falar' nas instâncias pessoa1 e pessoa2.
+pessoa1.falar(); // Isso imprimirá "Meu nome é Alice" no console.
+pessoa2.falar(); // Isso imprimirá "Meu nome é Bob" no console.
 ```
+**Protótipos criados por meio de Objetos Literais e Object.create() em JavaScript:**
+---
+Em JavaScript, você pode criar protótipos para objetos usando **"objetos literais"** ou o método **"Object.create()"**. 
+
+`Objeto Literal:` Em JavaScript, você pode criar protótipos para objetos usando objetos literais. Isso envolve a definição direta de propriedades e valores dentro de chaves {}. Usando a propriedade __proto__, você pode estabelecer uma relação de protótipo com outro objeto, permitindo que o objeto resultante herde as propriedades desse objeto.
 
 ```javascript
-// PROTOTIPOS CRIADOR POR MEIO DE OBJETOS LITERAIS
-
 const pessoa = {
     genero: 'masculino'
 }
-/* A MANEIRA MAIS SIMPLES DE CRIAR UM OBJETO BASEADO EM OUTRO É A FORMA LITERAL*/
-
 const funcionario = {
-    nome: 'bruno',
+    nome: 'Bruno',
     __proto__: pessoa
 }
-
-console.log(funcionario); // Saída: { nome: 'bruno' }
+console.log(funcionario); // Saída: { nome: 'Bruno' }
 console.log(funcionario.genero); // Saída: masculino
-
-
-/* A SEGUNDA MANEIRA SIMPLES É POR ATRAVÉS DO Object.create()*/
-
+```
+`Object.create():` Outra maneira de criar protótipos é por meio do método Object.create(). Isso permite criar um novo objeto com um objeto protótipo especificado. Estabelece uma relação de herança entre o novo objeto e o objeto protótipo, permitindo que o novo objeto herde as propriedades do objeto protótipo.
+```javascript
+const pessoa = {
+    genero: 'masculino'
+}
 const empregado = Object.create(pessoa);
-empregado.nome = 'bruno';
+empregado.nome = 'Bruno';
 
-console.log(empregado); // Saída: { nome: 'bruno' }
+console.log(empregado); // Saída: { nome: 'Bruno' }
 console.log(empregado.genero); // Saída: masculino
 ```
 
-```
-/* Entendendo melhor o operador New e Brincando com Protótipos */
 
-function Pessoa (nome, idade) {
+**Adicionando Funcionalidades aos Objetos Através de Protótipos**
+---
+JavaScript oferece a capacidade de adicionar métodos a objetos através de protótipos. Isso significa que você pode estender objetos com novas funcionalidades, não diretamente no objeto em si, mas em seu protótipo. Essa abordagem permite que todos os objetos criados a partir de um construtor específico compartilhem a mesma implementação do método, economizando recursos e facilitando a manutenção do código. É uma característica poderosa da linguagem que promove a reutilização e a eficiência do código.
+
+Demonstração de como o JavaScript permite adicionar métodos a objetos através de protótipos, mostrando um aspecto importante da linguagem.
+```javascript
+// Definindo um construtor chamado Pessoa
+function Pessoa(nome, idade) {
+  this.nome = nome;
+  this.idade = idade;
+}
+// Adicionando um método chamado "falar" ao protótipo do construtor Pessoa
+Pessoa.prototype.falar = function () {
+  console.log(`Meu nome é ${this.nome}`);
+}
+// Criando um novo objeto "funcionario" usando o construtor Pessoa
+const funcionario = new Pessoa('bruno', 30);
+// Chamando o método "falar" do objeto "funcionario"
+funcionario.falar(); // Isso imprimirá "Meu nome é bruno" no console
+```
+Em `Pessoa.prototype.falar = function () { ... }` é definindo um método chamado falar no protótipo do construtor Pessoa. 
+- Isso significa que qualquer objeto criado a partir do construtor Pessoa (por meio do operador new) terá acesso a esse método, compartilhando a mesma implementação. Esse método imprime uma mensagem no console com base no atributo nome do objeto.
+
+**Adicionar propriedades a um objeto existente**
+---
+JavaScript oferece a capacidade de adicionar propriedades a objetos existentes. Isso significa que é possível enriquecer um objeto já criado, acrescentando novas propriedades a ele, sem modificar diretamente sua estrutura. Essa abordagem é útil para estender objetos de forma dinâmica, sem a necessidade de recriá-los a partir do zero. Essa flexibilidade permite adaptar objetos à medida que as necessidades do programa evoluem, tornando o código mais versátil e eficiente.
+```javascript
+function Pessoa(nome, idade) {
     this.nome = nome;
     this.idade = idade;
 }
-/* */ 
-console.log(new Pessoa('bruno', 30));
-/* */
+// Adicionando um método chamado "falar" ao protótipo do construtor Pessoa
 Pessoa.prototype.falar = function () {
-    console.log(`Meu nome é ${this.nome}`)
+    console.log(`Meu nome é ${this.nome}`);
 }
-const funcionario = new Pessoa('bruno', 30)
-funcionario.falar();
-/* */
 const empregado = {
     genero: 'masculino'
-    //poderia ser vazio
 };
 Pessoa.call(empregado, 'bruno', 30); //pessoa passa a ser um objeto inrequecido
-
 console.log(empregado);
-console.log(empregado.nome);
 ```
+1. O construtor "Pessoa" é definido, que aceita dois parâmetros: "nome" e "idade". Ele cria um objeto com essas propriedades.
+2. Um método chamado "falar" é adicionado ao protótipo do construtor "Pessoa", de modo que todas as instâncias criadas a partir desse construtor terão acesso a esse método.
+3. Um objeto chamado "empregado" é criado com uma propriedade "gênero" definida como "masculino".
+4. Em seguida, a função Pessoa.call(empregado, 'bruno', 30); é chamada. Isso invoca o construtor "Pessoa" no contexto do objeto "empregado", o que significa que as propriedades "nome" e "idade" são definidas no objeto "empregado". Após essa chamada, o objeto "empregado" agora tem três propriedades: "gênero", "nome" e "idade".
+5. Por fim, o objeto "empregado" é impresso no console, mostrando todas as suas propriedades.
 
 
 
 
-
+---
 ## Como Contribuir
 
 Sinta-se à vontade para contribuir com novos exercícios, soluções ou melhorias neste repositório. O objetivo é compartilhar conhecimento e aprender juntos! Para contribuir, siga estas etapas:
