@@ -540,9 +540,6 @@ var uniqueSymbol = Symbol("descrição opcional");
 ```javascript
 var result = 10 / "texto";
 ```
-## CONVENÇÃO DE NOMENCLATURA
-
-
 ## PROTÓTIPO
 
 Em JavaScript, a herança é baseada em protótipos, não em classes como em outras linguagens. Os objetos herdam propriedades e métodos de outros objetos.
