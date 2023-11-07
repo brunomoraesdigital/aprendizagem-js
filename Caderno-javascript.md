@@ -714,9 +714,9 @@ console.log(empregado.genero); // Saída: masculino
 ```
 
 
-**Adicionando Funcionalidades aos Objetos Através de Protótipos**
+**Adicionando Funcionalidades aos Objetos criados por uma função construtora através de Protótipos**
 ---
-JavaScript oferece a capacidade de adicionar métodos a objetos através de protótipos. Isso significa que você pode estender objetos com novas funcionalidades, não diretamente no objeto em si, mas em seu protótipo. Essa abordagem permite que todos os objetos criados a partir de um construtor específico compartilhem a mesma implementação do método, economizando recursos e facilitando a manutenção do código. É uma característica poderosa da linguagem que promove a reutilização e a eficiência do código.
+JavaScript oferece a capacidade de adicionar métodos a objetos criados por uma função construtora através de protótipos. Isso significa que você pode estender objetos com novas funcionalidades, não diretamente no objeto em si, mas em seu protótipo. Essa abordagem permite que todos os objetos criados a partir de um construtor específico compartilhem a mesma implementação do método, economizando recursos e facilitando a manutenção do código. É uma característica poderosa da linguagem que promove a reutilização e a eficiência do código.
 
 Demonstração de como o JavaScript permite adicionar métodos a objetos através de protótipos, mostrando um aspecto importante da linguagem.
 ```javascript
@@ -737,9 +737,11 @@ funcionario.falar(); // Isso imprimirá "Meu nome é bruno" no console
 Em `Pessoa.prototype.falar = function () { ... }` é definindo um método chamado falar no protótipo do construtor Pessoa. 
 - Isso significa que qualquer objeto criado a partir do construtor Pessoa (por meio do operador new) terá acesso a esse método, compartilhando a mesma implementação. Esse método imprime uma mensagem no console com base no atributo nome do objeto.
 
-**Adicionar propriedades a um objeto existente**
+**Herança de propriedades no contexto de um objeto herdar as propriedades de um outro objeto criado por uma função construtora **
 ---
-JavaScript oferece a capacidade de adicionar propriedades a objetos existentes. Isso significa que é possível enriquecer um objeto já criado, acrescentando novas propriedades a ele, sem modificar diretamente sua estrutura. Essa abordagem é útil para estender objetos de forma dinâmica, sem a necessidade de recriá-los a partir do zero. Essa flexibilidade permite adaptar objetos à medida que as necessidades do programa evoluem, tornando o código mais versátil e eficiente.
+O metodo .call() em JavaScript é uma maneira de invocar uma função, definindo o valor de **'this'** explicitamente e passando argumentos para a função
+
+pode-se adicionar propriedades de objetos criados a partir de funções construtoras a objetos existentes. Isso significa que é possível enriquecer um objeto já criado, acrescentando novas propriedades a ele, sem modificar diretamente sua estrutura. Essa abordagem é útil para estender objetos de forma dinâmica, sem a necessidade de recriá-los a partir do zero. Essa flexibilidade permite adaptar objetos à medida que as necessidades do programa evoluem, tornando o código mais versátil e eficiente.
 ```javascript
 function Pessoa(nome, idade) {
     this.nome = nome;
@@ -753,6 +755,7 @@ const empregado = {
     genero: 'masculino'
 };
 Pessoa.call(empregado, 'bruno', 30); //pessoa passa a ser um objeto inrequecido
+                                     //A função .call() em JavaScript é uma maneira de invocar uma função, definindo o valor de this explicitamente e passando argumentos para a função.
 console.log(empregado);
 ```
 1. O construtor "Pessoa" é definido, que aceita dois parâmetros: "nome" e "idade". Ele cria um objeto com essas propriedades.
@@ -762,7 +765,7 @@ console.log(empregado);
 5. Por fim, o objeto "empregado" é impresso no console, mostrando todas as suas propriedades.
 
 
-
+A herança em JavaScript é baseada em protótipos. Cada objeto em JavaScript tem um protótipo associado, que é essencialmente uma referência a outro objeto. Quando você tenta acessar uma propriedade ou método em um objeto e não encontra, o JavaScript irá procurar no protótipo desse objeto e assim por diante, até encontrar a propriedade desejada ou chegar ao objeto "Object.prototype", que é a raiz da cadeia de protótipos
 
 ---
 ## Como Contribuir
