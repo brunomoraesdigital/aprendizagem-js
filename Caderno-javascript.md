@@ -542,13 +542,30 @@ var result = 10 / "texto";
 ```
 ## PROTÓTIPO
 
-Em JavaScript, a herança é baseada em protótipos, não em classes como em outras linguagens. Os objetos herdam propriedades e métodos de outros objetos.
+- Em JavaScript, a herança é baseada em protótipos, não em classes como em outras linguagens. Os objetos herdam propriedades e métodos de outros objetos.
 
-`Herança de Protótipo em JavaScript ` permite que um objeto herde propriedades e métodos de outro objeto, conhecido como seu protótipo. Isso é alcançado ao definir a propriedade __proto__ de um objeto filho, que aponta para o objeto protótipo. [[]] Quando uma propriedade ou método é acessado em um objeto filho, o JavaScript primeiro verifica se o objeto filho possui essa propriedade ou método e, se não, ele procura no objeto protótipo.
-
-Aqui está o código que demonstra a herança de protótipo:
+`protótipo` refere-se à herança e ao compartilhamento de métodos e propriedades entre objetos. Cada objeto em JavaScript possui um protótipo associado, que é essencialmente uma referência a outro objeto. Quando você tenta acessar um método ou uma propriedade em um objeto e não o encontra, o JavaScript procura no protótipo desse objeto e continua a busca na cadeia de protótipos, indo de objeto para protótipo, até encontrar a propriedade desejada ou chegar à raiz da cadeia de protótipos, que é normalmente 'Object.prototype'.
 ```javascript
 /* PROTOTIPO */
+// Criando um objeto 'cadastro' com uma propriedade 'situacao'
+const cadastro = {
+    situacao: 'ativo'
+}
+// Criando um objeto 'funcionario' com uma propriedade 'nome' e um protótipo apontando para 'cadastro'
+const funcionario = {
+    nome: 'Bruno',
+    __proto__: cadastro
+}
+// Exibindo o objeto 'funcionario'
+console.log(funcionario); // Saída: { nome: 'Bruno' }
+// Acessando a propriedade 'situacao' no objeto 'funcionario' (que é herdada do protótipo)
+console.log(funcionario.situacao); // Saída: ativo
+```
+`__proto__` é uma forma de acessar e manipular o protótipo do objeto diretamente, mas não é a maneira recomendada de fazer isso.
+- O uso de __proto__ não é considerado uma prática recomendada e pode causar problemas de compatibilidade em alguns ambientes.
+
+```javascript
+/* PROTOTIPO: __proto__ */
 const pessoa = {
     genero: 'masculino'
 }
@@ -559,6 +576,54 @@ const bruno = {
 }
 console.log(bruno.genero); // Saída: masculino
 ```
+- Em resumo, `__proto__` é uma propriedade que permite acessar e modificar o protótipo de um objeto individual. No entanto, é preferível usar métodos mais seguros e padronizados, como `Object.setPrototypeOf()` e `Object.getPrototypeOf()`, para manipular protótipos, em vez de utilizar `__proto__.`
+
+`Object.setPrototypeOf(target, prototype)` o método **'Object.setPrototypeOf()'** estabelece uma relação de herança entre o **'target'** e o **'prototype'**, permitindo que o **'target'** herde as propriedades do **'prototype'**.
+```javascript
+/* PROTOTIPO: Object.setPrototypeOf(target, prototype) */
+const pessoa = {
+    genero: 'masculino'
+}
+const bruno = {
+    nome: 'Bruno',
+    idade: 30,
+};
+Object.setPrototypeOf(bruno, pessoa);
+console.log(bruno.genero); // Saída: masculino
+```
+- Se houver conflitos de propriedades com os mesmos nomes, as propriedades do **'target'** terão prioridade sobre as do **'prototype'**.
+```javascript
+const prototype = {
+    idade: 30
+}
+const target = {
+    nome: 'Bruno',
+    idade: 20
+};
+Object.setPrototypeOf(target, prototype);
+console.log(target.idade); // Isso imprimirá 20, pois a propriedade "idade" do target tem prioridade.
+```
+`Object.getPrototypeOf()` O método Object.getPrototypeOf(target) retorna o objeto protótipo do objeto especificado target. Ele permite que você acesse o objeto que está sendo herdado pelo target, ou seja, o objeto do qual o target está obtendo suas propriedades e métodos herdados. 
+```javascript
+/* PROTOTIPO: `Object.getPrototypeOf(target)` */
+const pessoa = {
+    genero: 'masculino'
+}
+const bruno = {
+    nome: 'Bruno',
+    idade: 30,
+};
+Object.setPrototypeOf(bruno, pessoa);
+// Para obter o protótipo do objeto bruno
+const prototipoDoBruno = Object.getPrototypeOf(bruno);
+console.log(prototipoDoBruno); // Saída: { genero: 'masculino' }
+console.log(prototipoDoBruno.genero); // Saída: masculino
+```
+- Esse método é útil para entender a relação de herança de um objeto e pode ser usada para acessar as propriedades e métodos herdados desse objeto prototype.
+```javascript
+Object.getPrototypeOf(target) // Retorna o objeto prototype do target, permitindo a inspeção da hierarquia de herança.
+```
+
 `Sombreammento em JavaScript` ocorre quando um objeto filho tem uma propriedade com o mesmo nome que uma propriedade em seu objeto protótipo. Nesse caso, a propriedade do objeto filho "sombrea" a propriedade do objeto protótipo, e a propriedade do objeto protótipo não é acessada quando você se refere a ela a partir do objeto filho.
 
 Exemplo: Neste exemplo, o objeto **'funcionario'** tem uma propriedade "genero" que sombreia a propriedade "genero" do objeto protótipo "pessoa". Quando você acessa **'funcionario.genero'**, o valor "masculino" da propriedade do objeto filho é retornado, em vez do valor "n/i" do objeto protótipo. Isso demonstra o conceito de shadowing em JavaScript.
@@ -716,6 +781,7 @@ console.log(empregado.genero); // Saída: masculino
 
 **Adicionando Funcionalidades aos Objetos criados por uma função construtora através de Protótipos**
 ---
+
 JavaScript oferece a capacidade de adicionar métodos a objetos criados por uma função construtora através de protótipos. Isso significa que você pode estender objetos com novas funcionalidades, não diretamente no objeto em si, mas em seu protótipo. Essa abordagem permite que todos os objetos criados a partir de um construtor específico compartilhem a mesma implementação do método, economizando recursos e facilitando a manutenção do código. É uma característica poderosa da linguagem que promove a reutilização e a eficiência do código.
 
 Demonstração de como o JavaScript permite adicionar métodos a objetos através de protótipos, mostrando um aspecto importante da linguagem.
@@ -765,7 +831,7 @@ console.log(empregado);
 5. Por fim, o objeto "empregado" é impresso no console, mostrando todas as suas propriedades.
 
 
-A herança em JavaScript é baseada em protótipos. Cada objeto em JavaScript tem um protótipo associado, que é essencialmente uma referência a outro objeto. Quando você tenta acessar uma propriedade ou método em um objeto e não encontra, o JavaScript irá procurar no protótipo desse objeto e assim por diante, até encontrar a propriedade desejada ou chegar ao objeto "Object.prototype", que é a raiz da cadeia de protótipos
+
 
 ---
 ## Como Contribuir
