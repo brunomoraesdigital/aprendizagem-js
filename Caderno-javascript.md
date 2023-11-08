@@ -799,9 +799,8 @@ novoObjeto.saudacao(); // Isso imprimirá: "Olá, meu nome é Maria e tenho 25 a
 
 ```
 
-**Adicionando Funcionalidades aos Objetos criados por uma função construtora através de Protótipos**
+**Adicionando Funcionalidades a Objetos criados por uma função construtora através de Protótipos**
 ---
-
 JavaScript oferece a capacidade de adicionar métodos a objetos criados por uma função construtora através de protótipos. Isso significa que você pode estender objetos com novas funcionalidades, não diretamente no objeto em si, mas em seu protótipo. Essa abordagem permite que todos os objetos criados a partir de um construtor específico compartilhem a mesma implementação do método, economizando recursos e facilitando a manutenção do código. É uma característica poderosa da linguagem que promove a reutilização e a eficiência do código.
 
 Demonstração de como o JavaScript permite adicionar métodos a objetos através de protótipos, mostrando um aspecto importante da linguagem.
@@ -823,36 +822,26 @@ funcionario.falar(); // Isso imprimirá "Meu nome é bruno" no console
 Em `Pessoa.prototype.falar = function () { ... }` é definindo um método chamado falar no protótipo do construtor Pessoa. 
 - Isso significa que qualquer objeto criado a partir do construtor Pessoa (por meio do operador new) terá acesso a esse método, compartilhando a mesma implementação. Esse método imprime uma mensagem no console com base no atributo nome do objeto.
 
-**Herança de propriedades no contexto de um objeto herdar as propriedades de um outro objeto criado por uma função construtora **
+**Usando call() para passar Argumentos para Funções**
 ---
-O metodo .call() em JavaScript é uma maneira de invocar uma função, definindo o valor de **'this'** explicitamente e passando argumentos para a função
+O método `call()` em JavaScript permite invocar(chamar) uma função fornecida como um método de um objeto, permitindo que você defina explicitamente o valor do **'this'** e passe argumentos para a função. Quando o método `call()` é usado com argumentos, você pode passar os argumentos como uma lista separada por vírgulas após o primeiro argumento, que é o **objeto** que será usado como o contexto (this) para a função chamada.
+- call(thisArg, arg1, arg2, ...): O método call() aceita o seguinte:
+  - thisArg: O objeto que será usado como o contexto (this) para a função chamada. É o primeiro argumento passado para o método call().
+  - arg1, arg2, ...: São os argumentos que você deseja passar para a função que está sendo chamada. Você pode passar quantos argumentos forem necessários, separados por vírgulas.
 
-pode-se adicionar propriedades de objetos criados a partir de funções construtoras a objetos existentes. Isso significa que é possível enriquecer um objeto já criado, acrescentando novas propriedades a ele, sem modificar diretamente sua estrutura. Essa abordagem é útil para estender objetos de forma dinâmica, sem a necessidade de recriá-los a partir do zero. Essa flexibilidade permite adaptar objetos à medida que as necessidades do programa evoluem, tornando o código mais versátil e eficiente.
 ```javascript
 function Pessoa(nome, idade) {
     this.nome = nome;
     this.idade = idade;
 }
-// Adicionando um método chamado "falar" ao protótipo do construtor Pessoa
-Pessoa.prototype.falar = function () {
-    console.log(`Meu nome é ${this.nome}`);
-}
+
 const empregado = {
     genero: 'masculino'
 };
-Pessoa.call(empregado, 'bruno', 30); //pessoa passa a ser um objeto inrequecido
-                                     //A função .call() em JavaScript é uma maneira de invocar uma função, definindo o valor de this explicitamente e passando argumentos para a função.
+Pessoa.call(empregado, 'bruno', 30);
+
 console.log(empregado);
 ```
-1. O construtor "Pessoa" é definido, que aceita dois parâmetros: "nome" e "idade". Ele cria um objeto com essas propriedades.
-2. Um método chamado "falar" é adicionado ao protótipo do construtor "Pessoa", de modo que todas as instâncias criadas a partir desse construtor terão acesso a esse método.
-3. Um objeto chamado "empregado" é criado com uma propriedade "gênero" definida como "masculino".
-4. Em seguida, a função Pessoa.call(empregado, 'bruno', 30); é chamada. Isso invoca o construtor "Pessoa" no contexto do objeto "empregado", o que significa que as propriedades "nome" e "idade" são definidas no objeto "empregado". Após essa chamada, o objeto "empregado" agora tem três propriedades: "gênero", "nome" e "idade".
-5. Por fim, o objeto "empregado" é impresso no console, mostrando todas as suas propriedades.
-
-
-
-
 ---
 ## Como Contribuir
 
