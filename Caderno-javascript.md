@@ -727,7 +727,6 @@ var pessoa2 = new Pessoa("Bob", 25);
 pessoa1.falar(); // Isso imprimirá "Meu nome é Alice" no console.
 pessoa2.falar(); // Isso imprimirá "Meu nome é Bob" no console.
 
-
 /* CLASSE */
 // Aqui declaramos a classe Pessoa.
 class Pessoa {
@@ -777,7 +776,28 @@ empregado.nome = 'Bruno';
 console.log(empregado); // Saída: { nome: 'Bruno' }
 console.log(empregado.genero); // Saída: masculino
 ```
+**Exemplo:** criamos um objeto chamado pessoa que tem algumas propriedades e um método. Em seguida, usamos Object.create(pessoa) para criar um novo objeto chamado novoObjeto, que herda as propriedades e métodos de pessoa. Podemos então modificar as propriedades no novoObjeto sem afetar o objeto pessoa. Quando chamamos o método saudacao() no novoObjeto, ele funciona e exibe as propriedades do novoObjeto.
+```javascript
+// criar um objeto que servirá como protótipo para outro objeto
+const pessoa = {
+  nome: 'João',
+  idade: 30,
+  saudacao() {
+    console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+  }
+};
 
+// Criando um novo objeto que herda do objeto 'pessoa'
+const novoObjeto = Object.create(pessoa);
+
+// Modificando propriedades no novo objeto
+novoObjeto.nome = 'Maria';
+novoObjeto.idade = 25;
+
+// Chamando o método do novo objeto
+novoObjeto.saudacao(); // Isso imprimirá: "Olá, meu nome é Maria e tenho 25 anos."
+
+```
 
 **Adicionando Funcionalidades aos Objetos criados por uma função construtora através de Protótipos**
 ---
