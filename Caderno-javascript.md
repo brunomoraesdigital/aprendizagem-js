@@ -969,7 +969,8 @@ new
 
 ## Menção Honrosa aos Callbacks
 
-
+## Promises
+## Async e Await
 ---
 ## Como Contribuir
 
