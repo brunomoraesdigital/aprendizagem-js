@@ -215,17 +215,51 @@ for (const elemento of array) {
   // Código a ser repetido aqui
 }
 ```
-## Métodos de iteração de arrays
+## Métodos de iteração de arrays (Manipulação de listas)
 -Além dos loops e métodos mencionados acima, JavaScript oferece uma série de métodos de iteração convenientes para trabalhar com arrays:
 ` forEach() | map() | filter() | reduce() | some() | every() `
 - **forEach()**: permite executar uma função em cada elemento de um array sem a necessidade de escrever um loop explícito.
 ```javascript
+const lista = [1,2,3,4,5,6,7,8,9,10];
+lista.forEach((value, i, listRef) => {
+    console.log (value, i, listRef);
+})
+
 array.forEach(function(elemento) {
   // Código a ser repetido aqui
 });
 ```
 - **map()**: cria um novo array com os resultados de aplicar uma função a cada elemento do array original.
 ```javascript
+class Pessoa {
+    constructor(name) {
+        this.name = name
+    }
+}
+
+const lista = [new Pessoa('Bruno'), new Pessoa('William'), new Pessoa('Darlen'), new Pessoa('Pink')]
+
+console.log(lista);
+/*********************/
+const listaNomes = lista.map((element) => {
+    return element.name;
+});
+console.log(listaNomes);
+/*********************/
+const listaNomes = lista.map((element, i) => {
+    return `${i} - ${element.name}`;
+});
+console.log(listaNomes);
+
+const listaNomes = lista.map((element) => {
+    return  `
+        <li>
+        ${element.name}
+        </li>
+            `
+});
+console.log(listaNomes);
+
 const novoArray = array.map(function(elemento) {
   // Código a ser aplicado a cada elemento
   return novoElemento;
@@ -233,6 +267,13 @@ const novoArray = array.map(function(elemento) {
 ```
 - **filter()**: cria um novo array contendo apenas os elementos que atendem a uma condição especificada em uma função.
 ```javascript
+const lista = [1,2,3,4,5,6,7,8,9,10];
+
+const listaDeNumerosPares = lista.filter((element) => {
+    return (element % 2 ===0);
+})
+console.log(listaDeNumerosPares);
+
 const novoArray = array.filter(function(elemento) {
   // Condição para inclusão no novo array
   return verdadeiro ou falso;
@@ -240,6 +281,20 @@ const novoArray = array.filter(function(elemento) {
 ```
 - **reduce()**:  reduz os elementos do array a um único valor usando uma função acumuladora.
 ```javascript
+const lista = [1,2,3,4,5,6,7,8,9,10];
+
+const somaDeTodosOsNumeros = lista.reduce((previous, current) => {
+    return previous + current;
+})
+console.log(somaDeTodosOsNumeros);
+/************************/
+const somaDeTodosOsNumeros = lista.reduce((previous, current) => {
+    console.log(previous, current);
+    return previous + current;
+}, 0)
+console.log(somaDeTodosOsNumeros);
+
+
 const resultado = array.reduce(function(acumulador, elemento) {
   // Código para acumular os elementos
   return novoValorAcumulado;
@@ -842,6 +897,79 @@ Pessoa.call(empregado, 'bruno', 30);
 
 console.log(empregado);
 ```
+
+##First Class Functions
+Higher Order Functions
+
+##Function Declaration
+Function Expression
+
+##Declaração Explícita
+Arrow Function
+
+function funcaoUm() {
+    console.log(this);
+}
+
+const funcaoDois = () => {
+    console.log(this);
+}
+
+const bruno = {
+    nome: 'bruno',
+    funcaoUm,
+    funcaoDois
+}
+
+bruno.funcaoUm();
+bruno.funcaoDois();
+
+
+## Closures ou Fechamentos
+
+function soma(x) {
+    return function (y) {
+        return x + y;
+    }
+}
+console.log(soma(12)(18));
+
+function soma(x) {
+    return function (y) {
+        return x + y;
+    }
+}
+const somaParcial = soma(10);
+
+console.log(somaParcial(20));
+console.log(somaParcial(30));
+console.log(somaParcial(40));
+
+## Invocação Direta, Call, Apply e Operador New
+
+
+function teste () {
+    console.log('teste')
+}
+teste();
+
+const pessoa = {
+    nome: 'Bruno',
+    idade: 30
+}
+
+function gritar(prefixo) {
+    console.log(prefixo, this.nome);
+}
+gritar('oiiiii');
+gritar.apply(pessoa, ['oiiiiiii']);
+gritar.call(pessoa, 'olaaaaa', 5);
+
+new 
+
+## Menção Honrosa aos Callbacks
+
+
 ---
 ## Como Contribuir
 
