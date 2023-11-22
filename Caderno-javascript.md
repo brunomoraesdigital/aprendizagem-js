@@ -950,7 +950,7 @@ console.log(somar(2, 3)); // Saída: 5
    -  **Function Expression** é uma forma de declarar uma função como parte de uma expressão. Nesse caso, a função é atribuída a uma variável, o que significa que ela não é elevada ao topo do escopo como no hoisting. Essa abordagem permite uma maior flexibilidade, pois as funções podem ser anônimas (sem nome) ou nomeadas.
    - Exemplo  - a função é atribuída à variável multiplicar usando uma **Function Expression**. Essa abordagem é útil quando se deseja passar a função como argumento para outra função, armazená-la em uma estrutura de dados ou limitar seu escopo de visibilidade:
 ```javascript
-Copy code
+
 const multiplicar = function(a, b) {
   return a * b;
 };
@@ -969,7 +969,7 @@ console.log(multiplicar(4, 5)); // Saída: 20
    - A "Declaração Explícita de Função" refere-se à criação de funções usando a palavra-chave function. Essa forma de declaração é bastante direta e útil quando você precisa de uma função nomeada que pode ser chamada em qualquer parte do escopo, graças ao hoisting.
    - Exemplo - A função saudacao é declarada explicitamente usando a palavra-chave function. Ela é nomeada e pode ser chamada em qualquer ponto do código:
 ```javascript
-Copy code
+
 function saudacao(nome) {
   return `Olá, ${nome}!`;
 }
@@ -1218,7 +1218,7 @@ exemploAssincrono().then((resultado) => {
    - A palavra-chave await é usada dentro de uma função assíncrona para esperar a resolução de uma Promessa. Ela pausa a execução da função até que a Promessa seja resolvida e retorna o resultado da Promessa.
    - Exemplo de async/await - processarDados é uma função assíncrona que utiliza await para esperar a resolução da Promessa retornada por obterDados. Isso simplifica a lógica assíncrona, tornando-a semelhante à lógica síncrona:
 ```javascript
-Copy code
+
 function obterDados() {
   return new Promise((resolve) => {
     setTimeout(() => {
