@@ -1200,10 +1200,59 @@ processarDados();
    - Melhor Integração com APIs e Eventos:
       - Muitas APIs modernas e eventos em JavaScript retornam Promessas ou são compatíveis com elas.
 - Em resumo, as Promessas são uma ferramenta poderosa para lidar com operações assíncronas, melhorando a legibilidade e a manutenibilidade do código em comparação com callbacks aninhados.
-
-
-
 ## Async e Await
+- As palavras-chave async e await foram introduzidas no ECMAScript 2017 (ES8) para simplificar e melhorar a legibilidade do código assíncrono em JavaScript. Juntas, elas formam uma maneira mais elegante de lidar com Promessas.
+
+- Funções Assíncronas com async
+   - A palavra-chave async é usada para declarar que uma função retorna uma Promessa. Uma função assíncrona sempre retorna uma Promessa, mesmo que explicitamente não retorne uma. Isso permite o uso de await dentro da função.
+   - Exemplo de Função Assíncrona - exemploAssincrono é uma função assíncrona que retorna implicitamente uma Promessa:
+```javascript
+async function exemploAssincrono() {
+  return "Resultado assíncrono";
+}
+exemploAssincrono().then((resultado) => {
+  console.log(resultado); // Saída: Resultado assíncrono
+});
+```
+- Operador await
+   - A palavra-chave await é usada dentro de uma função assíncrona para esperar a resolução de uma Promessa. Ela pausa a execução da função até que a Promessa seja resolvida e retorna o resultado da Promessa.
+   - Exemplo de async/await - processarDados é uma função assíncrona que utiliza await para esperar a resolução da Promessa retornada por obterDados. Isso simplifica a lógica assíncrona, tornando-a semelhante à lógica síncrona:
+```javascript
+Copy code
+function obterDados() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Dados obtidos com sucesso!");
+    }, 2000);
+  });
+}
+async function processarDados() {
+  console.log("Iniciando...");
+  try {
+    const resultado = await obterDados();
+    console.log(resultado);
+  } catch (erro) {
+    console.error("Erro ao obter dados:", erro);
+  }
+  console.log("Concluído.");
+}
+// Chamando a função assíncrona
+processarDados();
+```
+- Benefícios do async/await
+   - Código Mais Legível
+      - Reduz a necessidade de callbacks aninhados, tornando o código mais legível e fácil de entender.
+   - Gestão Melhor de Erros
+      - O uso de try/catch é mais natural, proporcionando uma maneira mais limpa de gerenciar erros em comparação com o uso de .catch em Promessas.
+   - Sintaxe Concisa
+      - Torna o código assíncrono mais parecido com o código síncrono, facilitando a transição para desenvolvedores acostumados com lógica sequencial.
+   - Melhor Integração com Promessas
+      - async/await é uma camada de açúcar sintático sobre Promessas, proporcionando uma integração mais natural e intuitiva.
+   - Melhor Rastreamento de Pilha de Chamadas:
+      - Facilita o rastreamento de pilha de chamadas em comparação com callbacks aninhados.
+   - Considerações Finais:
+- async/await é uma ferramenta poderosa que simplifica significativamente o desenvolvimento de código assíncrono em JavaScript. Essa abordagem melhora a legibilidade e a manutenibilidade do código, tornando-o mais acessível para desenvolvedores e facilitando a transição de paradigmas de programação.
+
 ---
 ## Como Contribuir
 
