@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  a:link {text-decoration: none;color: #fff;}
+  a:visited {text-decoration: none; color: #fff;}
+  a:hover {text-decoration: none;color: goldenrod;}
+  a:active {text-decoration: none;color: gold;}
+  a:focus {text-decoration: none;color: goldenrod;}
+  
+  :root {
+    --tamanho-da-fonte: 16px;
+    transition: font-size 0.3s ease;
+  }
+  
+  html {
+    width: 100vw;
+    height: 100vh;
+    font-size: var(--tamanho-da-fonte);
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* Standard syntax */
+  }
+  
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.0625rem;
+    word-spacing: 0.125rem;
+    position: relative;
+  }
+  
+  .cabecalho {
+    background-color: #222222;
+    width: 100%;
+    padding: 1rem 0;
+    flex: 0 0 auto;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem
+  }
+  
+  .rodape {
+    background-color: #222222;
+    width: 100%;
+    /*padding: 1rem 0;*/
+    height: 3rem;
+    flex: 0 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  p {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+  
+  .areaDoJogo {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dica {
+    position: absolute;
+    bottom: 3.5rem;
+  }
+  
+  .textoDica {
+    font-weight: 700;
+    color: goldenrod;
+  }
+
+  /***********************************/
+
+
